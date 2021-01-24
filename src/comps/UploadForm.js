@@ -3,13 +3,13 @@ import ProgressBar from './ProgressBar';
 import uploadButton from '../comps/uploadButton.png'
 
 const UploadForm = () => {
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState(null); //react hooks
     const [error, setError] = useState(null);
 
     const types = ['image/*'];
 
     const changeHandler = (e) => {
-        let selected = e.target.files;//.files[0]; // JUST THE FIRST FILE, THIS IS HOW U DO MULTIPLE 
+        let selected = e.target.files[0]; // JUST THE FIRST FILE, THIS IS HOW U DO MULTIPLE 
         console.log(selected);
         if(selected /*&& types.includes(selected.type)*/) {
             for (let i = 0; i < e.target.files.length; i++) {
