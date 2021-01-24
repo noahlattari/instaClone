@@ -3,6 +3,7 @@
 :root{
   --primary: #9DC183;   
   --secondary: #4e4e4e;
+  --background: #f2f3f4;
   --error: #ff4a4a;
 }
 
@@ -11,6 +12,7 @@ body{
   font-family: "Noto Serif";
   color: var(--secondary);
   font-weight: normal;
+  background-color: var(--background);
 }
 
 a{

@@ -5,7 +5,7 @@ const Title = () => {
     <div className="title">
       <h1>~ <a href="http://noahlattari.com/">noahlattari's</a> shopify submission ~</h1>
       <h2>instaClone 📷 </h2>
-      <p>Press the + button below to upload a picture!</p>
+      <p>Click the folder below to upload a picture!</p>
     </div>
   )
 }
