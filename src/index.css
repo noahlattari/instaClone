@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 :root{
   --primary: #9DC183;   
@@ -27,6 +27,7 @@ a{
   font-size: 1.2rem;
   letter-spacing: 2px;
   font-weight: normal;
+  text-align: center;
 }
 .title h2{
   color: var(--primary);
@@ -36,6 +37,7 @@ a{
 .title p{
   color: var(--secondary);
   text-align: center;
+  font-size: 1.3rem;
 }
 .title h2{
   margin-top: 60px;
