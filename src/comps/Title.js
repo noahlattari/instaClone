@@ -3,9 +3,9 @@ import React from 'react';
 const Title = () => {
   return (
     <div className="title">
-      <h1>instaclone</h1>
-      <h2>Your Pictures</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h1>~ <a href="http://noahlattari.com/">noahlattari's</a> shopify submission ~</h1>
+      <h2>instaClone 📷 </h2>
+      <p>Press the + button below to upload a picture!</p>
     </div>
   )
 }
