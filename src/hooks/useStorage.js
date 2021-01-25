@@ -7,7 +7,6 @@ import { projectStorage, projectFirestore, timestamp } from '../firebase/config'
 
 const useStorage = (files) => {
 
-    const [progress, setProgress] = useState(0);
     const [error, setError] = useState(null);
     const [urls, setUrl] = useState([]); //image URL from storage after uploading, stores in DB.
    
@@ -17,8 +16,6 @@ const useStorage = (files) => {
             const collectionRef = projectFirestore.collection('images');
 
             storageRef.put(files[i]).on('state_changed', (snap) => { //When state changes, put the file in firebase
-                let percentage = (snap.bytesTransferred / snap.totalBytes) * 100 //Percentage progress of upload
-                setProgress(progress + (percentage/files.length -i));
             }, (err) => {
                 setError(err);
             }, async() => { //Asynchronous, whenever progress changes, use this function
