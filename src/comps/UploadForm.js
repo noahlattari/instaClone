@@ -35,7 +35,7 @@ const UploadForm = () => {
         <form>
           <label class="grow">
             <input type="file" id="files" multiple accept="image/*" onChange={changeHandler} />
-             <span>📁</span> 
+             <span role="img" aria-label="folder emoji">📁</span> 
           </label>
           <div className="output">
             { error && <div className="error">{ error }</div>}
