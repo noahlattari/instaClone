@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react';
 import useStorage from '../hooks/useStorage';
 
-const ProgressBar = ({ file, setFile }) => {
-    const { url, progress } = useStorage(file);
+const ProgressBar = ({ files, setFiles }) => {
+
+    const { urls, progress } = useStorage(files);
+
     useEffect( () => {
-        if(url) {
-            setFile(null); //Remove progress bar when image is uploaded
+        console.log(urls.length);
+        console.log(files.length);
+        if(urls.length === files.length) {
+            setFiles([]); //Remove progress bar when image is uploaded
+            console.log("files empty")
+            console.log("Files after empty: " + files.length);
         }
-    }, [url, setFile])
+    }, [setFiles, files, urls])
 
     return (
         <div className="progress-bar" style ={{ width: progress + '%' }}></div> 
