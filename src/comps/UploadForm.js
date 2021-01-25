@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
-import uploadButton from '../comps/uploadButton.png'
+import useStorage from '../hooks/useStorage';
 
 const UploadForm = () => {
     const [files, setFiles] = useState([]); //react hooks
     const [error, setError] = useState(null);
+    
 
     const types = ['image/*'];
 
     const changeHandler = (e) => {
-        let selected = e.target.files; // JUST THE FIRST FILE, THIS IS HOW U DO MULTIPLE 
+        let selected = e.target.files;
         if(selected /*&& types.includes(selected.type)*/) {
           console.log(files);
             for (let i = 0; i < e.target.files.length; i++) {
@@ -18,12 +19,14 @@ const UploadForm = () => {
                 setFiles(list);
                 setError('');
             }
-            //setFile(selected); //File in local state      
+   
         } else {
             setFiles(null);
             setError('Select only image files! (png/jpg)');
         }
-    }
+       // const { urls, progress } = useStorage(files);
+    } 
+
   console.log(files);
   console.log(files[0]);
     return (
@@ -33,9 +36,9 @@ const UploadForm = () => {
              📁 
           </label>
           <div className="output">
-            { error && <div className="error">{ "TEST" + error }</div>}
-            { files.length !== 0 && <div>{ "Uploading " + files.length + "files."}</div> }
-            { files.length !== 0 && <ProgressBar files={files} setFiles={ () => setFiles} /> }
+            { error && <div className="error">{ error }</div>}
+            { files.length !== 0 && <div>{ "Uploading " + files.length + " files."}</div> }
+            { files.length !== 0 && <ProgressBar files={files} setFiles={ (file) => setFiles(file) } /> } 
           </div>
         </form>
       );
