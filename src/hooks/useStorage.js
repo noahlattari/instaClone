@@ -27,10 +27,10 @@ const useStorage = (files) => {
                 setUrl(list); //Image url is now in storage
             }) 
         }
-    }, [files, urls])
+    }, [files])
     console.log("urls in usestorage size: " + urls.length);
     
-    return { error } //Accessible in other components
+    return { urls, error } //Accessible in other components
 }
 
 export default useStorage;

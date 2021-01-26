@@ -22,13 +22,12 @@ const UploadForm = () => {
                 setError('');
               } else {
                 console.log("in else");
-                setFiles(null);
+                setFiles([]);
                 setError('Select only image files! (png/jpg)');
               }
             }
-        } else {
-            console.log("in second else");
-            setFiles(null);
+        } else if(selected.length === 0) {
+            setFiles([]);
             setError('Error on upload, please try');
         }
     }
@@ -51,17 +50,17 @@ const UploadForm = () => {
     return (
         <form>
         <p>
-          <label class="grow">
+          <label className="grow">
             <input type="file" id="files" multiple accept="image/*" onChange={changeHandler} />
              <span role="img" aria-label="folder emoji">📁</span> 
           </label>
-          <label class ="grow">
+          <label className ="grow">
             <span role="img" aria-label="red x emoji" onClick={deleteAllImages} >❌</span> 
           </label>
           </p>
           <div className="output">
             { error && <div className="error">{ error }</div>}
-            { files.length !== 0 && <ProgressBar files={files} setFiles={ (file) => setFiles(file) } /> } 
+            { files.length !== 0 && <ProgressBar files={files} setFiles={setFiles} /> }
           </div>
         </form>
       );
