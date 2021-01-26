@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import ProgressBar from './ProgressBar';
+import PhotoFetch from './PhotoFetch';
 import useFirestore from '../hooks/useFirestore';
 import deleteImageFromFirestore from '../hooks/deleteImageFromFirestore';
 
+//UploadForm component: Defines and handles user input of photos to be sent to upload.
 const UploadForm = () => {
-    const [files, setFiles] = useState([]); //react hooks
+
+    const [files, setFiles] = useState([]); //React hooks
     const [error, setError] = useState(null);
     const { docs } = useFirestore('images');
 
-    const types = ['image/png', 'image/jpeg', 'image/gif'];
+    const types = ['image/png', 'image/jpeg', 'image/gif']; //Make sure user only uploads photos
+    /* TODO: Add a size Limit */
 
-    const changeHandler = (e) => {
+    //Change Handler to parse form input and set out files array to be uploaded.
+    const changeHandler = (e) => {  
         let selected = e.target.files;
         if(selected) {
-          console.log(files);
             for (let i = 0; i < e.target.files.length; i++) {
               if(types.includes(selected[i].type)){
                 const list = files;
@@ -21,20 +24,18 @@ const UploadForm = () => {
                 setFiles(list);
                 setError('');
               } else {
-                console.log("in else");
-                setFiles([]);
+                setFiles([]); //Empty our image array as user has an invalid upload
                 setError('Select only image files! (png/jpg)');
               }
             }
-        } else if(selected.length === 0) {
+        } else if(selected.length === 0) { //If file failed to get to the server
             setFiles([]);
             setError('Error on upload, please try');
         }
     }
     
-    const deleteAllImages = (e) => {
-      console.log(typeof docs);
-      console.log(docs.size);
+    //Click listener to delete all images from the database.
+    const deleteAllImages = (e) => { 
       if(docs.length === 0){
         alert('Error: No photos to delete.');
       } else {
@@ -47,20 +48,21 @@ const UploadForm = () => {
       }
   }
 
+    //Return some JSX for our emoji/buttons.
     return (
         <form>
         <p>
           <label className="grow">
             <input type="file" id="files" multiple accept="image/*" onChange={changeHandler} />
-             <span role="img" aria-label="folder emoji">📁</span> 
+             <span role="img" aria-label="folder emoji">📁</span>
           </label>
           <label className ="grow">
             <span role="img" aria-label="red x emoji" onClick={deleteAllImages} >❌</span> 
           </label>
           </p>
           <div className="output">
-            { error && <div className="error">{ error }</div>}
-            { files.length !== 0 && <ProgressBar files={files} setFiles={setFiles} /> }
+            { error && <div className="error">{ "Error:" + error }</div>}
+            { files.length !== 0 && <PhotoFetch files={files} setFiles={setFiles} /> }
           </div>
         </form>
       );

@@ -7,7 +7,6 @@
   --error: #ff4a4a;
 }
 
-/* base styles & title */
 body{
   font-family: "Noto Serif";
   color: var(--secondary);
@@ -44,7 +43,6 @@ a{
   font-size: 2.6rem;
 }
 
-/* upload form styles */
 form{
   margin: 10px 10px;
   text-align: center;
@@ -76,7 +74,6 @@ label:hover{
   color: var(--error);
 }
 
-/* image grid styles */
 .img-grid{
   margin: 20px auto;
   display: grid;
@@ -122,7 +119,6 @@ label:hover{
   background: var(--error);
 }
 
-/* modal styles */
 .backdrop{
   position: fixed;
   top: 0;

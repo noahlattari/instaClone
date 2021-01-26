@@ -1,6 +1,9 @@
 import React from 'react';
 
+//Title component: Defines the static top layer of the site.
 const Title = () => {
+
+  //Return JSX for the static title
   return (
     <div className="title">
       <h1>~ <a href="http://noahlattari.com/">noahlattari's</a> shopify submission ~</h1>
