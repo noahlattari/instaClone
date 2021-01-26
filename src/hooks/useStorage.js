@@ -30,7 +30,7 @@ const useStorage = (files) => {
         }
     }, [files])
     
-    return { urls, error } 
+    return { urls, error } //Accessible in other components
 }
 
 export default useStorage;

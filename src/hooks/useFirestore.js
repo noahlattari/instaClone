@@ -19,7 +19,7 @@ const useFirestore = (collection) => {
         return () => unsub(); //Unsubscribe from collection when we don't use it, clean up.
     }, [collection])
 
-    //return our docs array.
+    //return our docs
     return { docs };
 }
 

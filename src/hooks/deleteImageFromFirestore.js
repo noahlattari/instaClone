@@ -4,7 +4,7 @@ import { projectFirestore, projectStorage } from '../firebase/config';
 const deleteImageFromFirestore = (currentDoc) => {
     //Delete the current doc from the "images" colelction.
     projectFirestore.collection("images").doc(currentDoc.id).delete().then(function() {
-        console.log("Document successfully deleted!");
+        console.log("Document deleted from firestore.");
         let url = currentDoc.url;
 
         let imageName = url.substring(url.indexOf("/o")+ 3, url.indexOf("?"));
@@ -18,9 +18,9 @@ const deleteImageFromFirestore = (currentDoc) => {
 
         //We need to also delete from our other database holding just the images.
         storageRef.delete().then(() => {
-            console.log("Image deleted from bucket");
+            console.log("Image deleted from bucket.");
           }).catch((error) => {
-            console.error("Error on image deletion from bucket: " + error);
+            console.error("Error on image deletion from database: " + error);
           });
 
     }).catch(function(error) {
