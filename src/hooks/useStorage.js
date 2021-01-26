@@ -29,8 +29,8 @@ const useStorage = (files) => {
         }
     }, [files, urls])
     console.log("urls in usestorage size: " + urls.length);
+    
     return { error } //Accessible in other components
-
 }
 
 export default useStorage;

@@ -46,7 +46,7 @@ a{
 
 /* upload form styles */
 form{
-  margin: 30px auto 10px;
+  margin: 10px 10px;
   text-align: center;
 }
 label input{
@@ -62,6 +62,8 @@ label{
   border-radius: 60%;
   margin: auto;
   line-height: 30px;
+  margin-left: 50%;
+  float: left;
 }
 label:hover{
   background: var(--secondary);
@@ -82,7 +84,6 @@ label:hover{
   grid-gap: 40px;
 }
 .img-wrap{
-  overflow: hidden;
   height: 0;
   padding: 50% 0;
   position: relative;
@@ -92,9 +93,33 @@ label:hover{
   min-width: 100%;
   min-height: 100%;
   max-width: 150%;
+  height: 10px;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.userImage {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 150%;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.deleteButton {
+  top: 105px;
+  z-index:1;
+  border: 5px var(--secondary);
+  border-radius: 50%;
+  position:relative;
+  font-size: 1.0rem;
+}
+
+.deleteButton:hover{
+  background: var(--error);
 }
 
 /* modal styles */
@@ -107,6 +132,7 @@ label:hover{
   background: rgba(0,0,0,0.5);
 }
 .backdrop img{
+  border-color: #ff4a4a;
   display: block;
   max-width: 60%;
   max-height: 80%;

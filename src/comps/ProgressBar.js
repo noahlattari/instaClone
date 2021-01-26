@@ -1,7 +1,7 @@
 import React from 'react';
 import useStorage from '../hooks/useStorage';
 
-const ProgressBar = ({ files, setFiles }) => {
+const ProgressBar = ({ files }) => {
 
     useStorage(files);
     return <div></div>
