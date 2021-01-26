@@ -4,7 +4,7 @@ import { projectStorage, projectFirestore, timestamp } from '../firebase/config'
 //A hook is to create a small chunk of reusable code to be used in multiple components.
 //This hook will be responsable for handeling file uploads with the storage SDK.
 
-//Hook to interact with our storage db (just photos)
+//Hook to interact with our storage bucket (just photos)
 const useStorage = (files) => {
 
     const [error, setError] = useState(null);

@@ -1,6 +1,6 @@
 import { projectFirestore, projectStorage } from '../firebase/config';
 
-//Hook to delete an indidual document from the firestore db, and its associated image from the storage db.
+//Hook to delete an indidual document from the firestore db, and its associated image from the storage bucket.
 const deleteImageFromFirestore = (currentDoc) => {
     //Delete the current doc from the "images" colelction.
     projectFirestore.collection("images").doc(currentDoc.id).delete().then(function() {
@@ -15,13 +15,12 @@ const deleteImageFromFirestore = (currentDoc) => {
         */
 
         const storageRef = projectStorage.ref(imageName);
-        console.log("image name is: " + imageName)
 
         //We need to also delete from our other database holding just the images.
         storageRef.delete().then(() => {
-            console.log("byebye jojo");
+            console.log("Image deleted from bucket");
           }).catch((error) => {
-            console.error("Error on image deletion from database: " + error);
+            console.error("Error on image deletion from bucket: " + error);
           });
 
     }).catch(function(error) {

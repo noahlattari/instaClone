@@ -4,7 +4,7 @@ import useStorage from '../hooks/useStorage';
 //PhotoFetch component to allow us to easily call our useStorage hook.
 const PhotoFetch = ({ files, setFiles }) => {
 
-    const { urls } = useStorage(files); //Call the useStorage hook to upload to our db.
+    const { urls } = useStorage(files); //Call the useStorage hook to upload to our bucket.
 
     useEffect(() => {
         if (urls.length === files.length) {
