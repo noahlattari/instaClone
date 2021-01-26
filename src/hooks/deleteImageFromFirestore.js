@@ -1,9 +1,6 @@
 import { projectFirestore, projectStorage } from '../firebase/config';
 
 const deleteImageFromFirestore = (currentDoc) => {
-    console.log("sdacn");
-    console.log(currentDoc);
-    console.log(currentDoc.id);
     projectFirestore.collection("images").doc(currentDoc.id).delete().then(function() {
         console.log("Document successfully deleted!");
         let url = currentDoc.url;
