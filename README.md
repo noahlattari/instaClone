@@ -37,3 +37,14 @@ This will **not work** off the bat as you need to poulate **config.js** with my 
 
 ## Issue
 After uploading photos and waiting for it to finish, uploading again will not work. To fix this simply refresh the page after you've uploaded the photos. This is due to the **setFiles** array not emptying properly and forcing a refresh on that component.
+
+## Improvements
+If I had more time, these are the things I would have added.
+1. An authentication service using fireAuth and Google/Email/Github that would be tied to your database entries in firestore
+   1. Ability to upload files for other users to see or just for yourself.
+2. A docker image/kubernetes pod for aditional scalability and an easier setup to ensure the app runs locally on any OS.
+3. A dedicated hosting service/url, this could be done for money on AWS, Heroku, or Google Cloud.
+   1. A prod and dev environment url
+4. The ability to "like/upvote" public photos which would be configured in the firestore db.
+5. A self-written backend. 
+   1. firebase is a headless CMS (conent-management system) that provides data through its API. For more flexability, I could manually create a REST input to interface with a different NoSQL db (I would have chose MongoDB).
