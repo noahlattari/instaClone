@@ -24,7 +24,7 @@ instaClone uses a number of projects to work properly:
 
 ## Installation
 
-None: **Simply go to: https://noah-instaclone.web.app/.**
+None: **Simply go to: [REDACTED], I sent the link by email to the site, I do not want to post it yet in a public repo.**
 #### Running locally:
 instaClone requires [npm](https://www.npmjs.com/get-npm) to run.
 Install the dependencies and start the server.
