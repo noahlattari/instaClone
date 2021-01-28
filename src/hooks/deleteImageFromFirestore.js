@@ -16,11 +16,11 @@ const deleteImageFromFirestore = (currentDoc) => {
 
         const storageRef = projectStorage.ref(imageName);
 
-        //We need to also delete from our other database holding just the images.
+        //We need to also delete from our bucket holding just the images.
         storageRef.delete().then(() => {
             console.log("Image deleted from bucket.");
           }).catch((error) => {
-            console.error("Error on image deletion from database: " + error);
+            console.error("Error on image deletion from bucket: " + error);
           });
 
     }).catch(function(error) {

@@ -28,7 +28,7 @@ const UploadForm = () => {
                 setError('Select only image files! (png/jpg)');
               }
             }
-        } else if(selected === null) { //If file failed to get to the server
+        } else { //If file failed to get to the server
             const list = files;
             list.pop(selected);
             setFiles(list);
@@ -36,7 +36,7 @@ const UploadForm = () => {
         }
     }
     
-    //Click listener to delete all images from the database.
+    //Click listener to delete all images from the bucket & firestore.
     const deleteAllImages = (e) => { 
       if(docs.length === 0){
         alert('Error: No photos to delete.');
