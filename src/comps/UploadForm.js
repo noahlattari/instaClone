@@ -28,9 +28,11 @@ const UploadForm = () => {
                 setError('Select only image files! (png/jpg)');
               }
             }
-        } else if(selected.length === 0) { //If file failed to get to the server
-            setFiles([]);
-            setError('Error on upload, please try');
+        } else if(selected === null) { //If file failed to get to the server
+            const list = files;
+            list.pop(selected);
+            setFiles(list);
+            setError('Error on form upload, please try again!');
         }
     }
     

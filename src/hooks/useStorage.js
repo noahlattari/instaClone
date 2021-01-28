@@ -10,17 +10,19 @@ const useStorage = (files) => {
     const [error, setError] = useState(null);
     const [urls, setUrl] = useState([]); //Image URLs from storage after uploading
    
-    useEffect(() => { //This will happen everytime the dependancy changes
+    useEffect(() => { //This will happen everytime we get a new file
         for(let i = 0; i < files.length; i++){
             const storageRef = projectStorage.ref(files[i].name); //Reference to file in firebase bucket
             const collectionRef = projectFirestore.collection('images');
 
-            storageRef.put(files[i]).on('state_changed', (snap) => { //When state changes, put the file in firebase
+            //Asynchronous function that will fire when 'state_changed'
+            storageRef.put(files[i]).on('state_changed', (snap) => { //When state changes, put the file in reference
             }, (err) => {
-                console.error("Error on storage image upload: " + err)
+                console.error("Error on storage image upload: " + err);
                 setError(err);
-            }, async() => { //Asynchronous function that can be executed with a promise
-                const url = await storageRef.getDownloadURL(); //Once uploadedm get the URL of the image
+                return; //Continue, skip broken file
+            }, async() => { //Async function that fires when upload is complete
+                const url = await storageRef.getDownloadURL(); //get the URL of the image
                 const createdAt = timestamp();
                 collectionRef.add({ url, createdAt }); //Add the url of the image, and the created date into firestore
                 const list = urls;
@@ -28,7 +30,7 @@ const useStorage = (files) => {
                 setUrl(list); //Update our list of URLs
             }) 
         }
-    }, [files])
+    }, [files]) //Dependancy array, will fire everytime files change.
     
     return { urls, error } //Accessible in other components
 }
